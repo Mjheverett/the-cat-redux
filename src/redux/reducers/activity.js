@@ -1,6 +1,7 @@
-import { ACTION_NAP, ACTION_EAT, ACTION_PLAY } from '../actionTypes';
+import { ACTION_NAP, ACTION_EAT, ACTION_PLAY, UPDATE_NAME } from '../actionTypes';
 
 const initialState = {
+    name: "Guster",
     activity: "napping"
 }
 
@@ -23,6 +24,13 @@ const activityReducer = (state = initialState, action) => {
                 ...state,
                 activity: "playing",
             };
+        }
+        case UPDATE_NAME: {
+            const { name } = action.payload;
+            return {
+                ...state,
+                name: name
+            }
         }
         default:
             return state;
