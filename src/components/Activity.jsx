@@ -1,42 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { setActivity, setName } from '../redux/actions';
+import { setActivity } from '../redux/actions';
 
-const Activity = ({ activity, name, setActivity, setName }) => {
-    const [inputName, setInputName] = useState('');
-
-    const _updateInput = input => {
-        setInputName(input);
-    };
-
-    const _handleUpdateName = () => {
-        setName(inputName)
-        setInputName('')
-    };
+const Activity = ({ cat, id, setActivity }) => {
 
     return (
         <>
-            <h1>What is the cat doing now???</h1>
-            <p>{name} is {activity}</p>
-            <button type="button" onClick={() => setActivity("eating")}>Eating</button>
-            <button type="button" onClick={() => setActivity("napping")}>Napping</button>
-            <button type="button" onClick={() => setActivity("playing")}>Playing</button>
-            <br />
-            <input
-                onChange={e => _updateInput(e.target.value)}
-                value={inputName}
-            />
-            <button className="update-name" onClick={_handleUpdateName}>
-                Submit
-            </button>
+            <p>{cat.name} is {cat.activity}</p>
+            <button type="button" onClick={() => setActivity(id, "eating")}>Eating</button>
+            <button type="button" onClick={() => setActivity(id, "napping")}>Napping</button>
+            <button type="button" onClick={() => setActivity(id, "playing")}>Playing</button>
         </>
     )
 };
 
 const mapStateToProps = state => {
-    const { activity, name } = state;
-    return { activity, name };
+    const { cat, id } = state;
+    return ( cat, id );
     
 }
 
-export default connect(mapStateToProps, { setActivity, setName })(Activity);
+export default connect(mapStateToProps, { setActivity })(Activity);
