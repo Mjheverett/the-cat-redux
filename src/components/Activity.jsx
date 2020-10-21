@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { eat, play, nap, newName } from '../redux/actions';
+import { setActivity, setName } from '../redux/actions';
 
-const Activity = ({ activity, name, eat, play, nap, newName }) => {
+const Activity = ({ activity, name, setActivity, setName }) => {
     const [inputName, setInputName] = useState('');
 
     const _updateInput = input => {
@@ -10,7 +10,7 @@ const Activity = ({ activity, name, eat, play, nap, newName }) => {
     };
 
     const _handleUpdateName = () => {
-        newName(inputName)
+        setName(inputName)
         setInputName('')
     };
 
@@ -18,9 +18,9 @@ const Activity = ({ activity, name, eat, play, nap, newName }) => {
         <>
             <h1>What is the cat doing now???</h1>
             <p>{name} is {activity}</p>
-            <button type="button" onClick={() => eat()}>Eating</button>
-            <button type="button" onClick={() => nap()}>Napping</button>
-            <button type="button" onClick={() => play()}>Playing</button>
+            <button type="button" onClick={() => setActivity("eating")}>Eating</button>
+            <button type="button" onClick={() => setActivity("napping")}>Napping</button>
+            <button type="button" onClick={() => setActivity("playing")}>Playing</button>
             <br />
             <input
                 onChange={e => _updateInput(e.target.value)}
@@ -34,9 +34,9 @@ const Activity = ({ activity, name, eat, play, nap, newName }) => {
 };
 
 const mapStateToProps = state => {
-    const { activity } = state;
-    return activity;
+    const { activity, name } = state;
+    return ( activity, name );
     
 }
 
-export default connect(mapStateToProps, { eat, play, nap, newName })(Activity);
+export default connect(mapStateToProps, { setActivity, setName })(Activity);

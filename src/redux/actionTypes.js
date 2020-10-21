@@ -1,4 +1,2 @@
-export const ACTION_EAT = "ACTION_EAT";
-export const ACTION_NAP = "ACTION_NAP";
-export const ACTION_PLAY = "ACTION_PLAY";
-export const UPDATE_NAME = "UPDATE_NAME";
+export const SET_ACTIVITY = "SET_ACTIVITY";
+export const SET_NAME = "SET_NAME";
