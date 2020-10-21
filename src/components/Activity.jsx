@@ -35,7 +35,7 @@ const Activity = ({ activity, name, setActivity, setName }) => {
 
 const mapStateToProps = state => {
     const { activity, name } = state;
-    return ( activity, name );
+    return { activity, name };
     
 }
 

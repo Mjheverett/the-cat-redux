@@ -1,17 +1,12 @@
 import { SET_ACTIVITY } from '../actionTypes';
 
-const initialState = {
-    activity: "napping",
-};
+const initialState = "napping";
 
 const activityReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_ACTIVITY: {
             const { activity } = action.payload;
-            return {
-                ...state,
-                activity: activity
-            }
+            return activity;
         }
         default:
             return state;
