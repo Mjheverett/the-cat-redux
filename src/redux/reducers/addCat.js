@@ -10,29 +10,29 @@ const initialState = {
             name: 'Bandit',
             activity: 'eating',
         },
-    },
+    }
 };
 
 const catReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CAT: {
-            const { id, name } = action.payload;
+            const { id, name, activity } = action.payload;
             return {
-                ...state,
-                [id]: {
-                    name,
-                    activity: 'napping',
+                cats: {
+                ...state.cats,
+                [id]: { name, activity },
                 },
             };
         }
         case SET_ACTIVITY: {
             const { id, activity } = action.payload;
+            const name = state.cats[id].name;
             return {
-                ...state,
-                [id]: {
-                    activity,
-                }
-            }
+                cats: {
+                ...state.cats,
+                [id]: { name, activity },
+                },
+            };
         }
         default:
             return state;

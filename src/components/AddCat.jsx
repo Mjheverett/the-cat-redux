@@ -11,7 +11,7 @@ const AddCat = ({ cats, addCat }) => {
     };
 
     const _handleAddCat = () => {
-        addCat(inputName)
+        addCat(inputName, "napping")
         setInputName('')
     };
 
